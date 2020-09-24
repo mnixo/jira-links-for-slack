@@ -4,7 +4,7 @@ buttonAnchor.title = 'Copy hyperlinked text for Slack';
 buttonAnchor.innerHTML = `
   <img
     src="https://raw.githubusercontent.com/mnixo/jira-links-for-slack/master/slack.svg" 
-    style="margin-top: 2px;"
+    style="vertical-align: sub;"
   ></img>
 `;
 buttonAnchor.onclick = () => {
@@ -39,9 +39,9 @@ var updateButton = () => {
     buttonAnchor.parentElement.removeChild(buttonAnchor);
   }
   // add the button to the toolbar
-  var primaryToolbarDiv = document.querySelector('div[class="aui-toolbar2-primary"]');
-  if (primaryToolbarDiv) {
-    primaryToolbarDiv.appendChild(buttonAnchor);
+  var opsBarDiv = document.querySelector('div[id="opsbar-jira.issue.tools"]');
+  if (opsBarDiv) {
+    opsBarDiv.insertBefore(buttonAnchor, opsBarDiv.children[0]);
   } else {
     console.error('Could not append the button.');
   }
