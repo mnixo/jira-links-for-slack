@@ -1,7 +1,12 @@
 var buttonAnchor = document.createElement('a');
-buttonAnchor.classList.add('aui-button');
-buttonAnchor.classList.add('toolbar-trigger');
+buttonAnchor.className = 'aui-button toolbar-trigger';
 buttonAnchor.title = 'Copy hyperlinked text for Slack';
+buttonAnchor.innerHTML = `
+  <img
+    src="https://raw.githubusercontent.com/mnixo/jira-links-for-slack/master/slack.svg" 
+    style="margin-top: 2px;"
+  ></img>
+`;
 buttonAnchor.onclick = () => {
   // create a temporary anchor and add it to the body
   var issueId = document.querySelector('a[class="issue-link"]');
@@ -20,10 +25,6 @@ buttonAnchor.onclick = () => {
   // remove the anchor from the body
   document.body.removeChild(tempAnchor);
 };
-var imgLogo = document.createElement('img');
-imgLogo.src = 'https://raw.githubusercontent.com/mnixo/jira-links-for-slack/master/slack.svg';
-imgLogo.setAttribute('style', 'margin-top: 2px;');
-buttonAnchor.appendChild(imgLogo);
 
 var observer = new MutationObserver(mutations => {
   // whenever there's a mutation, update the button
